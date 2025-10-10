@@ -108,7 +108,8 @@ Git은 git add와 git commit을 통해서만 실제 버전 관리를 시작한�
 
 #### 📌 상태 변화 요약  
 Untracked → (git add) → Staged → (git commit) → Committed
-Committed → (파일 수정) → Modified → (git add) → Staged → (git commit)
+Committed → (파일 수정) → Modified → (git add) → Staged → (git commit) 
+무한반복하는 것임.
 - git add : 변경된 내용을 Staging Area에 올림
 - git commit : 변경 내용을 Repository에 기록
 - 커밋 후 다시 Working Directory(작업 공간)로 돌아오지만,
@@ -119,29 +120,53 @@ Committed → (파일 수정) → Modified → (git add) → Staged → (git com
 - git commit → “이 시점의 파일 상태를 기록할게!”
 
 > **지금까지 정리**
-📍 전체 순서 요약: 1️⃣ 폴더 생성 → 2️⃣ git init → 3️⃣ git add → 4️⃣ git commit
-⚙️ 단계별 설명
-1️⃣ 폴더 생성 및 이동
-cd Desktop : 바탕화면으로 이동 →  mkdir my-project : 새로운 폴더 생성 → cd my-project : 해당 폴더로 이동
-➡️ 이제 이 폴더가 작업 공간(Working Directory) 가 된다.
-2️⃣ Git 초기화
-git init
-현재 폴더에 .git 폴더가 생성됨 → 이 폴더는 Git이 버전 관리를 하기 위한 내부 저장소(Local Repository) → 하지만 아직 아무 파일도 버전 관리되고 있지 않음
-3️⃣ 버전 관리할 파일 선택 (git add)
-git add {파일명} 
-또는 모든 파일을 한 번에 추가할땐 : git add . 하면됨
-뜻:
-변경된 파일을 Staging Area 에 올림
-“이 파일을 버전으로 기록할 준비를 할게요!” 라는 뜻
-4️⃣ Commit으로 버전 기록
-git commit -m "첫 번째 커밋"
-Staging Area에 있던 파일들이 Repository 에 기록됨
-"첫 번째 커밋"은 해당 버전의 설명 (메시지는 자유롭게 작성 가능)
-이제 Git은 이 시점의 파일 상태를 하나의 버전(Commit) 으로 저장함
-💡 핵심 요약
-“폴더를 만들고 → Git을 초기화하고 → 파일을 올리고 → 버전으로 남긴다.”
-이 4단계를 이해하면
-Git의 기본 구조(Working Directory → Staging Area → Repository)를 완벽히 이해한 것이다 ✅
+📍 전체 순서 요약: 1️⃣ 폴더 생성 → 2️⃣ git init → 3️⃣ git add → 4️⃣ git commit  
+⚙️ 단계별 설명  
+1️⃣ 폴더 생성 및 이동  
+cd Desktop : 바탕화면으로 이동 →  mkdir my-project : 새로운 폴더 생성 → cd my-project : 해당 폴더로 이동  
+➡️ 이제 이 폴더가 작업 공간(Working Directory) 가 된다.  
+2️⃣ Git 초기화  
+git init  
+현재 폴더에 .git 폴더가 생성됨 → 이 폴더는 Git이 버전 관리를 하기 위한 내부 저장소(Local Repository) → 하지만 아직 아무 파일도 버전 관리되고 있지 않음  
+3️⃣ 버전 관리할 파일 선택 (git add)  
+git add {파일명}  
+또는 모든 파일을 한 번에 추가할땐 : git add . 하면됨  
+뜻:  
+변경된 파일을 Staging Area 에 올림  
+“이 파일을 버전으로 기록할 준비를 할게요!” 라는 뜻  
+4️⃣ Commit으로 버전 기록  
+git commit -m "첫 번째 커밋"  
+Staging Area에 있던 파일들이 Repository 에 기록됨  
+"첫 번째 커밋"은 해당 버전의 설명 (메시지는 자유롭게 작성 가능)  
+이제 Git은 이 시점의 파일 상태를 하나의 버전(Commit) 으로 저장함  
+💡 핵심 요약  
+“폴더를 만들고 → Git을 초기화하고 → 파일을 올리고 → 버전으로 남긴다.”  
+이 4단계를 이해하면  
+Git의 기본 구조(Working Directory → Staging Area → Repository)를 완벽히 이해한 것이다 ✅  
+
+**git status란?**
+현재 내 working directory 의 버전 관리 상태를 알 수 있다. 
+예를들어 
+vscode 터미널에서 git status 라고 하면 폴더들이 현재 어떤 상태 인지 알 수 있다.
+어떤게 Staging Area 에 올라 와있고 안올라와있는지, 어떤 파일이 수정이 되어있는지, 이 파일은 트랙킹이 되고 있는지 트랙킹이 되고 있지 않은지 를 알 수 있다. 
+
+**git add**
+내 폴더이름이 a.py 가 있고 Staging Area 에 올리고 싶다면 **git add a.py** 라고 하면 된다. 그런데 파일 많고 전체를 다 올리고 싶다면 **git add .** 이라고 하면 파일 전체가 Staging Area 에 올릴 수 있다. 그리고 git commit -m "설명" 을 하면 Repository에 올라고 또 수정 할 수 있는 것이다. 이런식으로 반복이다.  
+즉, 파일 각각으로 올리수도 있고 전체로 올릴 수도 있다.
+
+**git commit**
+Staging Area 에 올라 와있는 것을 Repository에 올릴려면 **git commit -m "설명"** 이렇게 해주면 된다. 
+
+**git log**
+현재 내 Repository에 쌓여있는 commit들을 볼 수 있다. 위에 있는 것일 수록 최신이다. 
+HEAD가 적혀 있는게 현재 내가 보고 있는 버전이다. 하나만 있다면 commit을 한번만 한것이다. 
+이런식으로 commit 목록들을 볼 수 있다. 
+Q를 누르면 나가진다.
+
+vscode로 갈 필요없이 이 모든걸 터미널/깃배쉬 에서 다 할 수 있음. 
 
 ---
-26:00 시작
+**Remote Repository**
+저장소이고, git hup에 있는 저장소를 말한다.
+지금 까지는 Local Repository 에서만 작업을 했다.
+git hyp과 연결하지 않았다. 
