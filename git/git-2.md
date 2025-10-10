@@ -1,4 +1,4 @@
-# 복습  
+## git init  복습  
 🧠 Git 기본 개념 정리
 📍 Git과 GitHub의 차이
 
@@ -31,8 +31,8 @@ ls -al
 → .git 폴더가 생성되어 있으면, 성공적으로 Git이 초기화된 것 ✅  
 
 ---
-#### 🧱 Git Commit 개념 정리
-📍 Commit이란?
+## 🧱 Git Commit 개념 정리
+📍 **Commit이란?**
 - commit 이란 “현재 변경 사항을 하나의 버전으로 저장한다”는 뜻이다.
 - 쉽게 말해 → “지금 상태를 저장해둬!” 라는 명령이다.
 - 여러 번의 commit을 쌓아가면서 버전 관리(history 관리) 가 이루어진다.
@@ -118,4 +118,30 @@ Committed → (파일 수정) → Modified → (git add) → Staged → (git com
 - git add → “이 파일을 관리할게!”
 - git commit → “이 시점의 파일 상태를 기록할게!”
 
-15:40부터 시작
+> **지금까지 정리**
+📍 전체 순서 요약: 1️⃣ 폴더 생성 → 2️⃣ git init → 3️⃣ git add → 4️⃣ git commit
+⚙️ 단계별 설명
+1️⃣ 폴더 생성 및 이동
+cd Desktop : 바탕화면으로 이동 →  mkdir my-project : 새로운 폴더 생성 → cd my-project : 해당 폴더로 이동
+➡️ 이제 이 폴더가 작업 공간(Working Directory) 가 된다.
+2️⃣ Git 초기화
+git init
+현재 폴더에 .git 폴더가 생성됨 → 이 폴더는 Git이 버전 관리를 하기 위한 내부 저장소(Local Repository) → 하지만 아직 아무 파일도 버전 관리되고 있지 않음
+3️⃣ 버전 관리할 파일 선택 (git add)
+git add {파일명} 
+또는 모든 파일을 한 번에 추가할땐 : git add . 하면됨
+뜻:
+변경된 파일을 Staging Area 에 올림
+“이 파일을 버전으로 기록할 준비를 할게요!” 라는 뜻
+4️⃣ Commit으로 버전 기록
+git commit -m "첫 번째 커밋"
+Staging Area에 있던 파일들이 Repository 에 기록됨
+"첫 번째 커밋"은 해당 버전의 설명 (메시지는 자유롭게 작성 가능)
+이제 Git은 이 시점의 파일 상태를 하나의 버전(Commit) 으로 저장함
+💡 핵심 요약
+“폴더를 만들고 → Git을 초기화하고 → 파일을 올리고 → 버전으로 남긴다.”
+이 4단계를 이해하면
+Git의 기본 구조(Working Directory → Staging Area → Repository)를 완벽히 이해한 것이다 ✅
+
+---
+26:00 시작
